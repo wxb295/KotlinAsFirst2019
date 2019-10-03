@@ -66,7 +66,6 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
 fun ageDescription(age: Int): String = TODO()
 
 
-
 /**
  * Простая
  *
@@ -87,6 +86,7 @@ fun timeForHalfWay(
         else -> t1 + t2 + (halfway - t1 * v1 + t2 * v2) / v3
     }
 }
+
 /**
  * Простая
  *
@@ -126,14 +126,12 @@ fun rookOrBishopThreatens(
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
-fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
+fun triangleKind(a: Double, b: Double, c: Double): Int =
+    when {
+        ((a * a + b * b == c * c) || (a * a + c * c == b * b) || (b * b + c * c == a * a)) -> 1
+        (a + b <= c) || (a + c <= b) || (b + c <= a) -> -1
+        ((a * a + b * b <= c * c) || (a * a + c * c <= b * b) || (b * b + c * c <= a * a)) -> 2
+        else -> 0
+    }
 
-/**
- * Средняя
- *
- * Даны четыре точки на одной прямой: A, B, C и D.
- * Координаты точек a, b, c, d соответственно, b >= a, d >= c.
- * Найти длину пересечения отрезков AB и CD.
- * Если пересечения нет, вернуть -1.
- */
-fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
+
