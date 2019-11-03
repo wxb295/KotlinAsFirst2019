@@ -3,6 +3,8 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
+import lesson1.task1.sqr
+import kotlin.math.pow
 import kotlin.math.sqrt
 
 /**
@@ -116,12 +118,7 @@ fun buildSumExample(list: List<Int>) = list.joinToString(separator = " + ", post
  * Модуль пустого вектора считать равным 0.0.
  */
 fun abs(v: List<Double>): Double {
-    var a = 0
-    for (element in v) {
-        a += sqr(element)
-    }
-    return sqrt( a )
-}
+
 
 
 /**
@@ -129,10 +126,7 @@ fun abs(v: List<Double>): Double {
  *
  * Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
  */
-fun mean(list: List<Double>): Double =
-
-
-
+fun mean(list: List<Double>): Double = TODO()
 
 
 /**
@@ -150,8 +144,6 @@ fun center(list: MutableList<Double>): MutableList<Double> {
     }
     return list
 }
-
-
 
 
 /**
@@ -210,7 +202,7 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
  * Результат разложения вернуть в виде списка множителей, например 75 -> (3, 5, 5).
  * Множители в списке должны располагаться по возрастанию.
  */
-fun factorize(n: Int): List<Int> {
+fun factorize(n: Int): List<Int> = TODO（）
     var number = n
     val list = mutableListOf<Int>()
     while (number > 1) {
@@ -218,8 +210,6 @@ fun factorize(n: Int): List<Int> {
         number /= minDivisor(number)
     }
     return list
-
-
 }
 
 /**
