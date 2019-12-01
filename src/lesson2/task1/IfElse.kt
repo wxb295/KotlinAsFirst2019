@@ -73,20 +73,31 @@ fun ageDescription(age: Int): String = TODO()
  * и t3 часов — со скоростью v3 км/час.
  * Определить, за какое время он одолел первую половину пути
  */
-fun timeForHalfWay(
-    t1: Double, v1: Double,
-    t2: Double, v2: Double,
-    t3: Double, v3: Double
-) {
-
-    val halfway = (t1 * v1 + t2 * v2 + t3 * v3) / 2
-    when {
-        halfway <= t1 * v1 -> halfway / v1
-        halfway <= t1 * v1 + t2 * v2 -> t1 + (halfway - t1 * v1) / v2
-        else -> t1 + t2 + (halfway - t1 * v1 + t2 * v2) / v3
+//fun timeForHalfWay(
+//    t1: Double, v1: Double,
+//    t2: Double, v2: Double,
+//    t3: Double, v3: Double
+//) {
+//
+//    val halfway = (t1 * v1 + t2 * v2 + t3 * v3) / 2
+//    when {
+//        halfway <= t1 * v1 -> halfway / v1
+//        halfway <= t1 * v1 + t2 * v2 -> t1 + (halfway - t1 * v1) / v2
+//        else -> t1 + t2 + (halfway - t1 * v1 + t2 * v2) / v3
+//    }
+//}
+fun timeForHalfWay(t1: Double, v1: Double,
+                   t2: Double, v2: Double,
+                   t3: Double, v3: Double): Double {
+    val s0 = (t1 * v1 + t2 * v2 + t3 * v3) / 2.0
+    val s1 = t1 * v1
+    val s2 = t2 * v2
+    return when {
+        (s0 < s1) -> s0 / v1
+        (s0 in s1..(s1 + s2)) -> t1 + (s0 - s1) / v2
+        else -> t1 + t2 + (s0 - s1 - s2) / v3
     }
 }
-
 /**
  * Простая
  *
@@ -134,4 +145,12 @@ fun triangleKind(a: Double, b: Double, c: Double): Int =
         else -> 0
     }
 
-
+/**
+ * Средняя
+ *
+ * Даны четыре точки на одной прямой: A, B, C и D.
+ * Координаты точек a, b, c, d соответственно, b >= a, d >= c.
+ * Найти длину пересечения отрезков AB и CD.
+ * Если пересечения нет, вернуть -1.
+ */
+fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
