@@ -2,6 +2,9 @@
 
 package lesson6.task1
 
+import jdk.nashorn.internal.runtime.regexp.joni.Regex
+import lesson2.task2.daysInMonth
+
 /**
  * Пример
  *
@@ -69,7 +72,25 @@ fun main() {
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30.02.2009) считается неверными
  * входными данными.
  */
-fun dateStrToDigit(str: String): String = TODO()
+
+
+fun dateStrToDigit(str: String): String {
+    val date = str.split(" ")
+    val listOfMonths = listOf(
+        "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
+        "августа", "сентября", "октября", "ноября", "декабря"
+    )
+    return try {
+        val a = date[0].toInt()
+        val b = date[1]
+        val c = date[2].toInt()
+        val numOfMonth = listOfMonths.indexOf(b) + 1
+        if (a !in 1..daysInMonth(numOfMonth, c) || numOfMonth !in 1..12 || date.size > 3 || c < 0) ""
+        else String.format("%02d.%02d.%d", a, numOfMonth, c)
+    } catch (e: Exception) {
+        ""
+    }
+}
 
 /**
  * Средняя
@@ -97,7 +118,9 @@ fun dateDigitToStr(digital: String): String = TODO()
  *
  * PS: Дополнительные примеры работы функции можно посмотреть в соответствующих тестах.
  */
-fun flattenPhoneNumber(phone: String): String = TODO()
+fun flattenPhoneNumber(phone: String):String = TODO()
+
+
 
 /**
  * Средняя
@@ -209,3 +232,4 @@ fun fromRoman(roman: String): Int = TODO()
  *
  */
 fun computeDeviceCells(cells: Int, commands: String, limit: Int): List<Int> = TODO()
+

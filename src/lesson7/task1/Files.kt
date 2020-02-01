@@ -2,6 +2,7 @@
 
 package lesson7.task1
 
+import lesson1.task1.numberRevert
 import java.io.File
 
 /**
@@ -53,8 +54,25 @@ fun alignFile(inputName: String, lineLength: Int, outputName: String) {
  * Регистр букв игнорировать, то есть буквы е и Е считать одинаковыми.
  *
  */
-fun countSubstrings(inputName: String, substrings: List<String>): Map<String, Int> = TODO()
+fun countSubstrings(inputName: String, substrings: List<String>): Map<String, Int> {
+    val a = File(inputName).readText().toLowerCase()
+    val b = substrings.map { it.toLowerCase() }
+    val c = mutableMapOf<String, Int>()
+    for (i in b.indices) {
+        c[substrings[i]] = 0
+        for (x in 0 until a.length - b[i].length + 1)
+            for (y in b[i].indices) {
+                if (b[i][y] == a[x + y]) {
+                    if (y == b[i].lastIndex)
+                        c[substrings[i]] = c[substrings[i]]!! + 1
+                } else
+                    break
+            }
 
+
+    }
+    return c
+}
 
 /**
  * Средняя

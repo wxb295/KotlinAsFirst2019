@@ -156,7 +156,19 @@ fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = (a.intersect(
  *     mapOf("Emergency" to "911", "Police" to "02")
  *   ) -> mapOf("Emergency" to "112, 911", "Police" to "02")
  */
-fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> = TODO()
+fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> {
+    val a = mapA.toMutableMap()
+    for ((name, number) in mapB) {
+        if (name !in a)
+            a[name] = number
+        else
+            if (a[name] != number)
+                a[name] = a[name] + ",$number"
+    }
+    return a
+
+
+}
 
 
 /**

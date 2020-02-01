@@ -2,6 +2,7 @@
 
 package lesson3.task1
 
+import lesson1.task1.sqr
 import kotlin.math.abs
 import kotlin.math.sqrt
 
@@ -156,7 +157,18 @@ fun isCoPrime(m: Int, n: Int): Boolean {
  * то есть, существует ли такое целое k, что m <= k*k <= n.
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
-fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
+fun squareBetweenExists(m: Int, n: Int): Boolean {
+    for (a in sqrt(m.toDouble()).toInt()..sqrt(n.toDouble()).toInt()) {
+
+        if (sqr(a) in m..n)
+            return true
+    }
+    return false
+}
+
+
+
+
 
 /**
  * Средняя
@@ -174,7 +186,16 @@ fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
  * Написать функцию, которая находит, сколько шагов требуется для
  * этого для какого-либо начального X > 0.
  */
-fun collatzSteps(x: Int): Int = TODO()
+fun collatzSteps(x: Int): Int {
+    var a = 0
+    var y = x
+    while (y != 1) {
+        if (y % 2 == 0) y /= 2
+        else y = 3 * y + 1
+        a++
+    }
+    return y
+}
 
 
 /**
@@ -207,7 +228,18 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+
+    var a = n
+    var x = 0
+    while (a > 0) {
+        x = x * 10 + a % 10
+        var a = 10
+
+    }
+    return x
+
+}
 
 
 /**
@@ -219,7 +251,15 @@ fun revert(n: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean {
+    var a = n
+    var x = 0
+    while (a > 0){
+        x= x * 10 + (a % 10)
+        a /= 10
+    }
+    return x == n
+}
 
 /**
  * Средняя
