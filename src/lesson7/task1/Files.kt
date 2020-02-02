@@ -87,8 +87,19 @@ fun countSubstrings(inputName: String, substrings: List<String>): Map<String, In
  * Исключения (жюри, брошюра, парашют) в рамках данного задания обрабатывать не нужно
  *
  */
-fun sibilants(inputName: String, outputName: String) {
-    TODO()
+fun sibilants(inputName: String, outputName: String){
+    val x = File(inputName).readText()
+    val writer = File(outputName).bufferedWriter()
+    val y = x
+        .replace(Regex("""(?<=[ЖжШшЧчЩщ])ы"""), "и")
+        .replace(Regex("""(?<=[ЖжШшЧчЩщ])Ы"""), "И")
+        .replace(Regex("""(?<=[ЖжШшЧчЩщ])ю"""), "у")
+        .replace(Regex("""(?<=[ЖжШшЧчЩщ])Ю"""), "У")
+        .replace(Regex("""(?<=[ЖжШшЧчЩщ])я"""), "а")
+        .replace(Regex("""(?<=[ЖжШшЧчЩщ])Я"""), "А")
+
+    writer.write(y)
+    writer.close()
 }
 
 /**
