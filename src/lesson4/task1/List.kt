@@ -4,6 +4,7 @@ package lesson4.task1
 
 import lesson1.task1.discriminant
 import lesson1.task1.sqr
+import lesson3.task1.minDivisor
 
 
 import kotlin.math.sqrt
@@ -212,7 +213,19 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
  * Результат разложения вернуть в виде списка множителей, например 75 -> (3, 5, 5).
  * Множители в списке должны располагаться по возрастанию.
  */
-fun factorize(n: Int): List<Int> = TODO()
+fun factorize(n: Int): List<Int> {
+    var a = n
+    var b: Int
+    val c = mutableListOf<Int>()
+    while (a > 1) {
+        b = minDivisor(a)
+
+        c.add(b)
+        a /= b
+
+    }
+    return c
+}
 
 /**
  * Сложная
@@ -278,7 +291,12 @@ fun decimal(digits: List<Int>, base: Int): Int{
  * Использовать функции стандартной библиотеки, напрямую и полностью решающие данную задачу
  * (например, str.toInt(base)), запрещается.
  */
-fun decimalFromString(str: String, base: Int): Int = TODO()
+fun decimalFromString(str: String, base: Int): Int{
+    val num = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
+    val list = mutableListOf<Int>()
+    for (gro in str) list.add(if (gro in num) gro - 'a' + 10 else gro - '0')
+    return decimal(list, base)
+}
 
 /**
  * Сложная
