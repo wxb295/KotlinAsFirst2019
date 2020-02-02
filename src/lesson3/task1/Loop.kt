@@ -269,7 +269,18 @@ fun isPalindrome(n: Int): Boolean {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO()
+fun hasDifferentDigits(n: Int): Boolean{
+    var a = 0
+    var b = n
+    val x = n % 10
+    val count = digitNumber(b)
+    for (i in 1..count) {
+        if (x == b % 10) a += 1
+        else break
+        b / 10
+    }
+    return a != count
+}
 
 /**
  * Сложная
@@ -280,7 +291,24 @@ fun hasDifferentDigits(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO()
+fun squareSequenceDigit(n: Int): Int {
+    var a = 1
+    var b = 2
+    var c = 1
+    while (c < n) {
+        a = sqr(b)
+        c += digitNumber(a)
+        b++
+    }
+    return if (c != n) {
+        while (c != n) {
+            c--
+            a /= 10
+        }
+        a % 10
+    } else a % 10
+}
+
 
 /**
  * Сложная

@@ -159,10 +159,6 @@ fun center(list: MutableList<Double>): MutableList<Double> {
 }
 
 
-
-
-
-
 /**
  * Средняя
  *
@@ -170,7 +166,7 @@ fun center(list: MutableList<Double>): MutableList<Double> {
  * представленные в виде списков a и b. Скалярное произведение считать по формуле:
  * C = a1b1 + a2b2 + ... + aNbN. Произведение пустых векторов считать равным 0.
  */
-fun times(a: List<Int>, b: List<Int>): Int = TODO()
+fun times(a: List<Int>, b: List<Int>): Int = a.zip(b) { a, b -> a * b }.sum()
 
 
 /**
@@ -181,7 +177,16 @@ fun times(a: List<Int>, b: List<Int>): Int = TODO()
  * Коэффициенты многочлена заданы списком p: (p0, p1, p2, p3, ..., pN).
  * Значение пустого многочлена равно 0 при любом x.
  */
-fun polynom(p: List<Int>, x: Int): Int = TODO()
+fun polynom(p: List<Int>, x: Int): Int {
+    var a = 0
+    var b = 1
+    for (c in p.indices) {
+        a += p[c] * b
+        b *= x
+    }
+    return a
+}
+
 
 /**
  * Средняя
@@ -216,7 +221,7 @@ fun factorize(n: Int): List<Int> = TODO()
  * Результат разложения вернуть в виде строки, например 75 -> 3*5*5
  * Множители в результирующей строке должны располагаться по возрастанию.
  */
-fun factorizeToString(n: Int): String = TODO()
+fun factorizeToString(n: Int): String = factorize(n).joinToString(separator = "*")
 
 /**
  * Средняя
@@ -247,7 +252,19 @@ fun convertToString(n: Int, base: Int): String = TODO()
  * из системы счисления с основанием base в десятичную.
  * Например: digits = (1, 3, 12), base = 14 -> 250
  */
-fun decimal(digits: List<Int>, base: Int): Int = TODO()
+fun decimal(digits: List<Int>, base: Int): Int{
+    var a = 0
+    var b = 1
+    for (i in 0..digits.size) {
+
+        a += digits[digits.size - 1 - i] * b
+
+        b *= base
+
+    }
+    return a
+}
+
 
 /**
  * Сложная
@@ -271,7 +288,31 @@ fun decimalFromString(str: String, base: Int): Int = TODO()
  * 90 = XC, 100 = C, 400 = CD, 500 = D, 900 = CM, 1000 = M.
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
-fun roman(n: Int): String = TODO()
+fun roman(n: Int): String {
+    var a = ""
+    var b = n
+    val equalities = mapOf(
+        1 to "I",
+        4 to "IV",
+        5 to "V",
+        9 to "IX",
+        10 to "X",
+        40 to "XL",
+        50 to "L",
+        90 to "XC",
+        100 to "C",
+        400 to "CD",
+        500 to "D",
+        900 to "CM",
+        1000 to "M"
+    )
+    for (i in equalities.keys) {
+        val num = b / i
+        a += equalities.getValue(i).repeat(num)
+        b -= i * num
+    }
+    return a
+}
 
 /**
  * Очень сложная
