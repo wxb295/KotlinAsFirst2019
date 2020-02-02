@@ -301,31 +301,20 @@ fun decimalFromString(str: String, base: Int): Int {
  * 90 = XC, 100 = C, 400 = CD, 500 = D, 900 = CM, 1000 = M.
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
+val romanDigits = listOf("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
+val digits = listOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
 fun roman(n: Int): String {
+    var num = n
     var a = ""
-    var b = n
-    val equalities = mapOf(
-        1 to "I",
-        4 to "IV",
-        5 to "V",
-        9 to "IX",
-        10 to "X",
-        40 to "XL",
-        50 to "L",
-        90 to "XC",
-        100 to "C",
-        400 to "CD",
-        500 to "D",
-        900 to "CM",
-        1000 to "M"
-    )
-    for (i in equalities.keys) {
-        val num = b / i
-        a += equalities.getValue(i).repeat(num)
-        b -= i * num
+    for (i in digits.indices) {
+        while (num >= digits[i]) {
+            a += romanDigits[i]
+            num -= digits[i]
+        }
     }
     return a
 }
+
 
 /**
  * Очень сложная
