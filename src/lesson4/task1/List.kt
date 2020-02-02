@@ -178,7 +178,7 @@ fun times(a: List<Int>, b: List<Int>): Int = a.zip(b) { a, b -> a * b }.sum()
  * Коэффициенты многочлена заданы списком p: (p0, p1, p2, p3, ..., pN).
  * Значение пустого многочлена равно 0 при любом x.
  */
-fun polynom(p: List<Int>, x: Int): Int {
+fun polynom (p: List<Int>, x: Int): Int {
     var a = 0
     var b = 1
     for (c in p.indices) {
@@ -219,10 +219,8 @@ fun factorize(n: Int): List<Int> {
     val c = mutableListOf<Int>()
     while (a > 1) {
         b = minDivisor(a)
-
         c.add(b)
         a /= b
-
     }
     return c
 }
@@ -265,15 +263,12 @@ fun convertToString(n: Int, base: Int): String = TODO()
  * из системы счисления с основанием base в десятичную.
  * Например: digits = (1, 3, 12), base = 14 -> 250
  */
-fun decimal(digits: List<Int>, base: Int): Int{
+fun decimal(digits: List<Int>, base: Int): Int {
     var a = 0
     var b = 1
     for (i in 0..digits.size) {
-
         a += digits[digits.size - 1 - i] * b
-
         b *= base
-
     }
     return a
 }
@@ -291,7 +286,7 @@ fun decimal(digits: List<Int>, base: Int): Int{
  * Использовать функции стандартной библиотеки, напрямую и полностью решающие данную задачу
  * (например, str.toInt(base)), запрещается.
  */
-fun decimalFromString(str: String, base: Int): Int{
+fun decimalFromString(str: String, base: Int): Int {
     val num = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
     val list = mutableListOf<Int>()
     for (gro in str) list.add(if (gro in num) gro - 'a' + 10 else gro - '0')
