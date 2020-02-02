@@ -232,7 +232,7 @@ fun factorize(n: Int): List<Int> {
  * Результат разложения вернуть в виде строки, например 75 -> 3*5*5
  * Множители в результирующей строке должны располагаться по возрастанию.
  */
-fun factorizeToString(n: Int): String = factorize(n).joinToString(separator = "*")
+fun factorizeToString(n: Int): String = TODO()
 
 /**
  * Средняя
@@ -286,12 +286,7 @@ fun decimal(digits: List<Int>, base: Int): Int {
  * Использовать функции стандартной библиотеки, напрямую и полностью решающие данную задачу
  * (например, str.toInt(base)), запрещается.
  */
-fun decimalFromString(str: String, base: Int): Int {
-    val num = "a b c d e f g h i j k l m n o p q r s t u v w x y z"
-    val list = mutableListOf<Int>()
-    for (gro in str) list.add(if (gro in num) gro - 'a' + 10 else gro - '0')
-    return decimal(list, base)
-}
+fun decimalFromString(str: String, base: Int): Int = TODO()
 
 /**
  * Сложная
