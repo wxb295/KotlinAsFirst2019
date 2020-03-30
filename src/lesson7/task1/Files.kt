@@ -225,7 +225,7 @@ fun chooseLongestChaoticWord(inputName: String, outputName: String) {
     }
     var outputstr = ""
     for (str in longlist) {
-        outpustr "$str"
+        outputstr "$str"
     }
     writeTex(outputName, outputstr.substring(0, outputStr.length - 1))
 }
