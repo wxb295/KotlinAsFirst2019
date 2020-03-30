@@ -158,7 +158,7 @@ fun firstDuplicateIndex(str: String): Int {
         b.append(str[i])
         ++i
     }
-    i+
+    i++
     while (i < str.length){
     val c = str[i]
     if (c != ' ') a.append(c) else {
