@@ -55,23 +55,7 @@ fun alignFile(inputName: String, lineLength: Int, outputName: String) {
  *
  */
 fun countSubstrings(inputName: String, substrings: List<String>): Map<String, Int> {
-    val a = File(inputName).readText().toLowerCase()
-    val b = substrings.map { it.toLowerCase() }
-    val c = mutableMapOf<String, Int>()
-    for (i in b.indices) {
-        c[substrings[i]] = 0
-        for (x in 0 until a.length - b[i].length + 1)
-            for (y in b[i].indices) {
-                if (b[i][y] == a[x + y]) {
-                    if (y == b[i].lastIndex)
-                        c[substrings[i]] = c[substrings[i]]!! + 1
-                } else
-                    break
-            }
-
-
-    }
-    return c
+    TODO()
 }
 
 /**
@@ -87,19 +71,8 @@ fun countSubstrings(inputName: String, substrings: List<String>): Map<String, In
  * Исключения (жюри, брошюра, парашют) в рамках данного задания обрабатывать не нужно
  *
  */
-fun sibilants(inputName: String, outputName: String){
-    val x = File(inputName).readText()
-    val writer = File(outputName).bufferedWriter()
-    val y = x
-        .replace(Regex("""(?<=[ЖжШшЧчЩщ])ы"""), "и")
-        .replace(Regex("""(?<=[ЖжШшЧчЩщ])Ы"""), "И")
-        .replace(Regex("""(?<=[ЖжШшЧчЩщ])ю"""), "у")
-        .replace(Regex("""(?<=[ЖжШшЧчЩщ])Ю"""), "У")
-        .replace(Regex("""(?<=[ЖжШшЧчЩщ])я"""), "а")
-        .replace(Regex("""(?<=[ЖжШшЧчЩщ])Я"""), "А")
-
-    writer.write(y)
-    writer.close()
+fun sibilants(inputName: String, outputName: String) {
+    TODO()
 }
 
 /**
@@ -238,8 +211,35 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
  * Обратите внимание: данная функция не имеет возвращаемого значения
  */
 fun chooseLongestChaoticWord(inputName: String, outputName: String) {
-    TODO()
+    val list = File(inputName)
+    var longList: MutableList<string> = List()
+    var maxLength = 0
+    for (str in list) {
+        if (!Repeat(str)) {
+            if (str!!.length == maxLength) longlist.add(str)
+            else if (str.length > maxLength) {
+                maxLength = str.length
+                longlist.add(str)
+            }
+        }
+    }
+    var outputstr = ""
+    for (str in longlist) {
+        outputstr "$str"
+    }
+    writeTex(outputName, outputstr.substring(0, outputStr.length - 1))
 }
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Сложная
